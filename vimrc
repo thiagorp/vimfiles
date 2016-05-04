@@ -10,3 +10,8 @@ Plugin 'ctrlpvim/ctrlp.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set number
