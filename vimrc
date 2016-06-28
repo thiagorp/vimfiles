@@ -11,6 +11,7 @@ Plugin 'tpope/vim-endwise'
 Plugin 'rking/ag.vim'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'vim-ruby/vim-ruby'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
