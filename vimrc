@@ -13,6 +13,7 @@ Plugin 'rking/ag.vim'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'scrooloose/nerdtree'
+Plugin 'othree/html5.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
