@@ -41,3 +41,6 @@ nmap <silent> <leader>t :TestFile<CR>
 
 " fzf
 nnoremap <C-p> :Files<CR>
+
+" Gemfile
+autocmd BufNewFile,BufRead Gemfile set filetype=ruby
