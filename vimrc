@@ -7,14 +7,14 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-sensible.git'
 Plugin 'tpope/vim-fugitive.git'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-endwise'
-Plugin 'rking/ag.vim'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'scrooloose/nerdtree'
 Plugin 'othree/html5.vim'
 Plugin 'janko-m/vim-test'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -38,3 +38,6 @@ autocmd filetype ruby highlight Folded ctermfg=black
 " Test mappings
 nmap <silent> <leader>T :TestNearest<CR>
 nmap <silent> <leader>t :TestFile<CR>
+
+" fzf
+nnoremap <C-p> :Files<CR>
