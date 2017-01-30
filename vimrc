@@ -45,5 +45,8 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let g:fzf_files_options =
   \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
 
+" NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
 " Gemfile
 autocmd BufNewFile,BufRead Gemfile set filetype=ruby
