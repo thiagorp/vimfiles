@@ -16,6 +16,7 @@ Plugin 'janko-m/vim-test'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'begriffs/haskell-vim-now'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
