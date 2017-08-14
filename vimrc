@@ -15,8 +15,7 @@ Plugin 'othree/html5.vim'
 Plugin 'janko-m/vim-test'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'begriffs/haskell-vim-now'
+Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -52,3 +51,8 @@ map <C-n> :NERDTreeToggle<CR>
 
 " Gemfile
 autocmd BufNewFile,BufRead Gemfile set filetype=ruby
+
+" Solarized
+set background=dark
+colorscheme solarized
+let g:solarized_termcolors=256
