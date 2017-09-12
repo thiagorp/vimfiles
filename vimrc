@@ -16,6 +16,7 @@ Plugin 'janko-m/vim-test'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'elixir-editors/vim-elixir'
 Plugin 'neovimhaskell/haskell-vim'
 Plugin 'Shougo/vimproc.vim', { 'do': 'make' }
 Plugin 'Shougo/neocomplete.vim'
