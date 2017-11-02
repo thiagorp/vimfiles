@@ -22,7 +22,7 @@ Plugin 'Shougo/vimproc.vim', { 'do': 'make' }
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'eagletmt/neco-ghc'
-Plugin 'vim-syntastic/syntastic'
+Plugin 'w0rp/ale'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -69,17 +69,6 @@ autocmd BufWritePost *.hs GhcModCheckAndLintAsync
 map <silent> hit :GhcModTypeInsert<CR>
 map <silent> ht :GhcModType<CR>
 map <silent> htc :GhcModTypeClear<CR>
-
-" syntastic
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_mode_map = { 'passive_filetypes': ['haskell'] }
 
 " hpack
 autocmd BufWritePost package.yaml silent !hpack --silent
