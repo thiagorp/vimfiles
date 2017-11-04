@@ -22,6 +22,7 @@ Plugin 'Shougo/vimproc.vim', { 'do': 'make' }
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'eagletmt/neco-ghc'
+Plugin 'alx741/vim-hindent'
 Plugin 'w0rp/ale'
 
 call vundle#end()            " required
@@ -65,10 +66,16 @@ let g:neocomplete#enable_at_startup = 1
 let g:necoghc_enable_detailed_browse = 1
 
 " ghcmod-vim
-autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+" autocmd BufWritePost *.hs GhcModCheckAndLintAsync
 map <silent> hit :GhcModTypeInsert<CR>
 map <silent> ht :GhcModType<CR>
 map <silent> htc :GhcModTypeClear<CR>
+
+" ale
+let g:ale_linters = { 'haskell' : ['ghc-mod', 'hlitnt', 'stack_build', 'stack_ghc'] }
+
+" vim-hindent
+let g:hindent_on_save = 1
 
 " hpack
 autocmd BufWritePost package.yaml silent !hpack --silent
