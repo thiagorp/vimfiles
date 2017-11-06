@@ -72,7 +72,8 @@ map <silent> ht :GhcModType<CR>
 map <silent> htc :GhcModTypeClear<CR>
 
 " ale
-let g:ale_linters = { 'haskell' : ['ghc-mod', 'hlitnt', 'stack_build', 'stack_ghc'] }
+let g:ale_linters = { 'haskell' : ['ghc-mod', 'hlint', 'stack_build', 'stack_ghc'] }
+map <silent> <leader>d :ALEDetail<CR>
 
 " vim-hindent
 let g:hindent_on_save = 1
