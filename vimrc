@@ -73,6 +73,7 @@ map <silent> htc :GhcModTypeClear<CR>
 
 " ale
 let g:ale_linters = { 'haskell' : ['ghc-mod', 'hlint', 'stack_build', 'stack_ghc'] }
+let g:ale_echo_msg_format = '[%linter%] [%severity%] %s'
 map <silent> <leader>d :ALEDetail<CR>
 
 " vim-hindent
