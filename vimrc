@@ -34,6 +34,10 @@ set tabstop=2
 set shiftwidth=2
 set number
 
+set undodir=~/.vim/.undo//
+set backupdir=~/.vim/.backup//
+set directory=~/.vim/.swp//
+
 let mapleader=" "
 
 autocmd filetype ruby setlocal colorcolumn=80
