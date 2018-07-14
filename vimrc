@@ -24,6 +24,7 @@ Plugin 'eagletmt/ghcmod-vim'
 Plugin 'eagletmt/neco-ghc'
 Plugin 'alx741/vim-hindent'
 Plugin 'w0rp/ale'
+Plugin 'ElmCast/elm-vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -81,3 +82,6 @@ let g:hindent_on_save = 1
 
 " hpack
 autocmd BufWritePost package.yaml silent !hpack --silent
+
+" elm-vim
+let g:elm_format_autosave = 1
