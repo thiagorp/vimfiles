@@ -20,6 +20,7 @@ Plug 'ElmCast/elm-vim'
 " Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 filetype plugin indent on    " required
@@ -89,3 +90,4 @@ let g:ftplugin_sql_omni_key = '<C-j>'
 
 " Remove sidebars on MacVim
 set guioptions=
+
