@@ -1,5 +1,6 @@
 tmp/
 view/
+plugged/
 bundle
 *.swp
 .netrwhist

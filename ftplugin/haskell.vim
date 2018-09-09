@@ -1,2 +1,1 @@
 setlocal formatprg=hindent
-

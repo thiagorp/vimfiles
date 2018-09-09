@@ -1,32 +1,27 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-sensible.git'
-Plugin 'tpope/vim-fugitive.git'
-Plugin 'tpope/vim-endwise'
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'scrooloose/nerdtree'
-Plugin 'othree/html5.vim'
-Plugin 'janko-m/vim-test'
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plugin 'junegunn/fzf.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'elixir-editors/vim-elixir'
-Plugin 'neovimhaskell/haskell-vim'
-Plugin 'Shougo/vimproc.vim', { 'do': 'make' }
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'eagletmt/ghcmod-vim'
-Plugin 'eagletmt/neco-ghc'
-Plugin 'alx741/vim-hindent'
-Plugin 'w0rp/ale'
-Plugin 'ElmCast/elm-vim'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-endwise'
+Plug 'scrooloose/nerdtree'
+Plug 'othree/html5.vim'
+Plug 'janko-m/vim-test'
+Plug '/usr/local/bin/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'elixir-editors/vim-elixir'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'alx741/vim-hindent'
+Plug 'w0rp/ale'
+Plug 'ElmCast/elm-vim'
+" Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-call vundle#end()            " required
+call plug#end()
 filetype plugin indent on    " required
 
 set expandtab
@@ -47,11 +42,12 @@ nmap <silent> <leader>T :TestNearest<CR>
 nmap <silent> <leader>t :TestFile<CR>
 
 " fzf
-nnoremap <C-p> :Files<CR>
+nnoremap <C-p> :GFiles<CR>
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-let g:fzf_layout = { 'left': '~40%' }
-let g:fzf_files_options =
-  \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
+let g:fzf_layout = { 'left': '~100%' }
+set rtp+=/usr/local/opt/fzf
+command! -bang -nargs=? -complete=dir GFiles
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
@@ -61,23 +57,12 @@ autocmd BufNewFile,BufRead Gemfile set filetype=ruby
 
 " Solarized
 set background=dark
+set t_Co=256
 colorscheme solarized
 let g:solarized_termcolors=256
 
-" Neocomplete
-let g:neocomplete#enable_at_startup = 1
-
-" Necoghc
-let g:necoghc_enable_detailed_browse = 1
-
-" ghcmod-vim
-" autocmd BufWritePost *.hs GhcModCheckAndLintAsync
-map <silent> hit :GhcModTypeInsert<CR>
-map <silent> ht :GhcModType<CR>
-map <silent> htc :GhcModTypeClear<CR>
-
 " ale
-let g:ale_linters = { 'haskell' : ['ghc-mod', 'hlint', 'stack_build', 'stack_ghc'] }
+let g:ale_linters = { 'haskell' : ['hlint'] }
 let g:ale_echo_msg_format = '[%linter%] [%severity%] %s'
 map <silent> <leader>d :ALEDetail<CR>
 
@@ -89,3 +74,18 @@ autocmd BufWritePost package.yaml silent !hpack --silent
 
 " elm-vim
 let g:elm_format_autosave = 1
+
+" Make .sql files faster
+let g:ftplugin_sql_omni_key = '<C-j>'
+
+" LanguageClient
+"let g:LanguageClient_serverCommands = {
+    "\ 'haskell': ['hie-wrapper', '--lsp'],
+    "\ }
+
+"nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+"nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+
+
+" Remove sidebars on MacVim
+set guioptions=
