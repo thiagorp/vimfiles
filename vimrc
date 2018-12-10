@@ -17,10 +17,16 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'alx741/vim-hindent'
 Plug 'w0rp/ale'
 Plug 'ElmCast/elm-vim'
-" Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'purescript-contrib/purescript-vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'mxw/vim-jsx'
+Plug 'rust-lang/rust.vim'
 
 call plug#end()
 filetype plugin indent on    " required
@@ -38,6 +44,11 @@ let mapleader=" "
 
 autocmd filetype ruby setlocal colorcolumn=80
 
+" Set the differenc cursor on insert mode
+
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
 " Test mappings
 nmap <silent> <leader>T :TestNearest<CR>
 nmap <silent> <leader>t :TestFile<CR>
@@ -48,7 +59,7 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let g:fzf_layout = { 'left': '~100%' }
 set rtp+=/usr/local/opt/fzf
 command! -bang -nargs=? -complete=dir GFiles
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
@@ -64,11 +75,13 @@ let g:solarized_termcolors=256
 
 " ale
 let g:ale_linters = { 'haskell' : ['hlint'] }
+let g:ale_fix_on_save = 1
+let g:ale_fixers = { 'typescript' : ['tslint'] }
 let g:ale_echo_msg_format = '[%linter%] [%severity%] %s'
 map <silent> <leader>d :ALEDetail<CR>
 
 " vim-hindent
-let g:hindent_on_save = 1
+let g:hindent_on_save = 0
 
 " hpack
 autocmd BufWritePost package.yaml silent !hpack --silent
@@ -79,15 +92,20 @@ let g:elm_format_autosave = 1
 " Make .sql files faster
 let g:ftplugin_sql_omni_key = '<C-j>'
 
-" LanguageClient
-"let g:LanguageClient_serverCommands = {
-    "\ 'haskell': ['hie-wrapper', '--lsp'],
-    "\ }
-
-"nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-"nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-
 
 " Remove sidebars on MacVim
 set guioptions=
 
+
+" tmux navigator
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-H> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-J> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-K> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-L> :TmuxNavigateRight<cr>
+nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
+
+" tsuquyomi
+set ballooneval
+autocmd FileType typescript setlocal balloonexpr=tsuquyomi#balloonexpr()
+autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
