@@ -109,3 +109,6 @@ nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
 set ballooneval
 autocmd FileType typescript setlocal balloonexpr=tsuquyomi#balloonexpr()
 autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+
+" rust.vim
+let g:rustfmt_autosave = 1
