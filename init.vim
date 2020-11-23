@@ -11,7 +11,7 @@ Plug 'othree/html5.vim'
 Plug 'janko-m/vim-test'
 Plug '/usr/local/bin/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'altercation/vim-colors-solarized'
+Plug 'lifepillar/vim-solarized8'
 Plug 'elixir-editors/vim-elixir'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'alx741/vim-hindent'
@@ -23,7 +23,6 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'purescript-contrib/purescript-vim'
 Plug 'leafgarland/typescript-vim'
-Plug 'Quramy/tsuquyomi'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'mxw/vim-jsx'
 Plug 'rust-lang/rust.vim'
@@ -36,9 +35,9 @@ set tabstop=2
 set shiftwidth=2
 set number
 
-set undodir=~/.vim/.undo//
-set backupdir=~/.vim/.backup//
-set directory=~/.vim/.swp//
+set undodir=~/.config/nvim/.undo//
+set backupdir=~/.config/nvim/.backup//
+set directory=~/.config/nvim/.swp//
 
 let mapleader=" "
 
@@ -69,9 +68,9 @@ autocmd BufNewFile,BufRead Gemfile set filetype=ruby
 
 " Solarized
 set background=dark
-set t_Co=256
-colorscheme solarized
-let g:solarized_termcolors=256
+" set t_Co=256
+colorscheme solarized8
+" let g:solarized_termcolors=256
 
 " ale
 let g:ale_linters = { 'haskell' : ['hlint'] }
@@ -104,11 +103,6 @@ nnoremap <silent> <C-J> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-K> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-L> :TmuxNavigateRight<cr>
 nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
-
-" tsuquyomi
-set ballooneval
-autocmd FileType typescript setlocal balloonexpr=tsuquyomi#balloonexpr()
-autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
 
 " rust.vim
 let g:rustfmt_autosave = 1
